@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import ExamplePage from './components/ExamplePage.jsx'
+import React, { useReducer, useState, useEffect } from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import Theme from "./Theme/ThemeFile.js"
+import { CssBaseline, Typography, GlobalStyles, Container, Box}from "@mui/material/";
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={Theme}>
+        <div className="App">
+          <ExamplePage />
+        </div>
+      </ThemeProvider>
+    </>
   );
 }
 
