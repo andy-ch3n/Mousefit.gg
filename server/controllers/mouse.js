@@ -20,3 +20,13 @@ exports.addMouse = (req, res) => {
     }
   })
 }
+
+exports.allMouse = (req, res) => {
+  Mouse.find({}, (err, result) => {
+    if (err) {
+      res.status(418).send('Error!')
+    } else {
+      res.status(200).send(result)
+    }
+  })
+}
