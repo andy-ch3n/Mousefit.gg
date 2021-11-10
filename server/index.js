@@ -4,7 +4,9 @@ const router = require('./Routes/index.js')
 const db = require('./database')
 require('dotenv').config();
 const server = express();
+var cors = require('cors')
 
+server.use(cors())
 server.use(morgan('dev'));
 server.use(express.json());
 server.use('/api', router)

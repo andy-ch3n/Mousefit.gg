@@ -1,4 +1,4 @@
-import ExamplePage from './components/ExamplePage.jsx'
+import QuizPage from './components/QuizPage.jsx'
 import React, { useReducer, useState, useEffect } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import Theme from "./Theme/ThemeFile.js"
@@ -12,7 +12,7 @@ function App() {
     <>
       <ThemeProvider theme={Theme}>
         <div className="App">
-          <ExamplePage />
+          <QuizPage />
         </div>
       </ThemeProvider>
     </>
