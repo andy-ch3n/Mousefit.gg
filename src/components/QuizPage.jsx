@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 export default function QuizPage() {
 	const questions = [
@@ -92,7 +91,7 @@ export default function QuizPage() {
 
 	return (
 		<div className='app'>
-			<>
+			<div style={{opacity: '1'}}>
 				<div className='question-section'>
 					<div className='question-count'>
 						<span>Question {currentQuestion + 1}</span>/{questions.length}
@@ -104,7 +103,7 @@ export default function QuizPage() {
 						<button onClick={() => handleAnswerClick(answerOption.value, categoryType)}>{answerOption.answerText}</button>
 					))}
 				</div>
-			</>
-		</div>
+			</div>
+	 </div>
 	);
 }
