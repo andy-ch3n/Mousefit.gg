@@ -1,6 +1,8 @@
 // import ExamplePage from './components/ExamplePage.jsx'
-// import React, { useReducer, useState, useEffect } from "react";
+import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import Theme from "./Theme/ThemeFile.js"
 import Header from "./components/Header.jsx"
 import Mouse from "./components/Mouse.jsx"
@@ -24,6 +26,16 @@ function App() {
           <Header />
           <Mouse />
         </div>
+        <Box
+          textAlign='center'
+          position='absolute'
+          top='75%'
+          left='40%'
+        >
+          <Button variant='contained'>
+            Take the survey
+          </Button>
+        </Box>
       </ThemeProvider>
     </>
   );

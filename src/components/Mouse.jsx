@@ -57,33 +57,24 @@ function Mouse() {
       }
     )
 
-    // const geometry = new THREE.SphereGeometry( 15, 32, 16 );
-    // const material = new THREE.MeshStandardMaterial( {
-    //   color: 0xffffff,
-    //   metalness: 1,
-    //   roughness: 0,
-    // });
-    // const sphere = new THREE.Mesh( geometry, material );
-    // scene.add( sphere );
-
     // Lighting
 
     const ambientLight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 0.5 );
-    // ambientLight.intensity = 20;
+    ambientLight.intensity = 2;
     scene.add(ambientLight)
 
     // White directional light at half intensity shining from the top.
     const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
-    // directionalLight.intensity = 20;
+    directionalLight.intensity = 1;
     directionalLight.position.set(5, 5, -5);
     scene.add( directionalLight );
 
 
     // Camera Position
 
-    camera.position.set(0, 0, 5);
+    camera.position.set(0, .4, 3);
 
-    const controls = new OrbitControls( camera, renderer.domElement );
+    // const controls = new OrbitControls( camera, renderer.domElement );
 
     function onWindowResize(){
         camera.aspect = modelRef.current.clientWidth / modelRef.current.clientHeight;
@@ -96,8 +87,8 @@ function Mouse() {
 
     const animate = function () {
       requestAnimationFrame( animate );
-      // scene.rotateY(0.01);
-      controls.update();
+      scene.rotateY(0.01);
+      // controls.update();
       renderer.render( scene, camera );
     };
 
@@ -115,17 +106,17 @@ function Mouse() {
         position: 'relative'
       }}
     >
+      <h1 className="main-header">Find the perfect gaming mouse</h1>
       <div
         ref={modelRef}
         style={{
           position: 'absolute',
-          top: 0,
+          top: -250,
           bottom: 0,
           left: 0,
           right: 0,
         }}
       >
-
       </div>
     </div>
   )
