@@ -54,7 +54,7 @@ function App() {
         </div> */}
         <Container>
             <ResultsPage />
-            <Footer />
+            {/* <Footer /> */}
           </Container>
       </ThemeProvider>
     </>
