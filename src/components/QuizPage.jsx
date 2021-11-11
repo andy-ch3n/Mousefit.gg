@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import '../QuizPage.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFinalMouse, getFinalMouse } from './redux/state/finalMouseSlice.js';
 
 export default function QuizPage() {
 	const questions = [
@@ -43,6 +44,8 @@ export default function QuizPage() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [categoryType, setCategoryType] = useState('');
 	const [mouseList, setMouseList] = useState([]);
+	const finalMouse = useSelector(getFinalMouse);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		getMouseList();
@@ -75,7 +78,6 @@ export default function QuizPage() {
 		} else if (type === 'mouseSize') {
 			filteredList = mouseList.filter(mouse => (mouse[type] >= filterTerm[0] && mouse[type] <= filterTerm[1]))		}
 
-		console.log(filteredList);
 		setMouseList(filteredList);
 	}
 
@@ -86,8 +88,13 @@ export default function QuizPage() {
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
-			console.log(mouseList)
+			const result = randomFinalMouse(mouseList);
+			dispatch(setFinalMouse({ finalmouse: result }))
 		}
+	}
+
+	function randomFinalMouse(arr) {
+    return arr[Math.floor(arr.length * Math.random())];
 	}
 
 	return (

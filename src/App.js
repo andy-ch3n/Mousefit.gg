@@ -1,4 +1,3 @@
-// import ExamplePage from './components/ExamplePage.jsx'
 import React from "react"
 import { useSelector } from 'react-redux'
 import { getClicked } from './components/redux/state/quizButtonClickedSlice.js'
@@ -8,6 +7,10 @@ import Theme from "./Theme/ThemeFile.js"
 import Header from "./components/Header.jsx"
 import Mouse from "./components/Mouse.jsx"
 import QuizButton from './components/QuizButton.jsx'
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Footer from './components/Footer.jsx'
+import ResultsPage from './components/ResultsPage.jsx'
 
 function App() {
   // const quizButtonClicked = useSelector(getQuizButtonClicked)
@@ -16,7 +19,8 @@ function App() {
   const landingPage = () => {
     if(!quizClicked.quizbuttonclicked) {
       return (
-          <Mouse />
+          // <Mouse />
+          <></>
       )
     }
     return (<></>)
@@ -29,6 +33,7 @@ function App() {
         <div id='stars'></div>
         <div id='stars2'></div>
         <div id='stars3'></div>
+        <Header/>
         <div
         style={{
           width: '100vw',
