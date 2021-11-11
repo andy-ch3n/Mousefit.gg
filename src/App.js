@@ -1,4 +1,3 @@
-// import ExamplePage from './components/ExamplePage.jsx'
 import React from "react"
 import { useSelector } from 'react-redux'
 import { getClicked } from './components/redux/state/quizButtonClickedSlice.js'
@@ -20,7 +19,8 @@ function App() {
   const landingPage = () => {
     if(!quizClicked.quizbuttonclicked) {
       return (
-          <Mouse />
+          // <Mouse />
+          <></>
       )
     }
     return (<></>)
@@ -34,11 +34,6 @@ function App() {
         <div id='stars2'></div>
         <div id='stars3'></div>
         <Header/>
-        {/* <Grid container alignItems="center">
-          <Grid item align='center' xs={12} sm={12} m={12}>
-            <QuizButton />
-          </Grid>
-        </Grid> */}
         <div
         style={{
           width: '100vw',
