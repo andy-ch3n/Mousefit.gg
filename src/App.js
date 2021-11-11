@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Theme from "./Theme/ThemeFile.js"
+import QuizButton from './components/QuizButton.jsx'
 import Header from "./components/Header.jsx"
 import Mouse from "./components/Mouse.jsx"
 // import { CssBaseline, Typography, GlobalStyles, Container, Box}from "@mui/material/";
@@ -32,10 +33,14 @@ function App() {
           top='75%'
           left='40%'
         >
-          <Button variant='contained'>
+          {/* <Button variant='contained'>
             Take the survey
-          </Button>
+          </Button> */}
+           <QuizButton />
         </Box>
+          <div id='stars'></div>
+          <div id='stars2'></div>
+          <div id='stars3'></div>
       </ThemeProvider>
     </>
   );

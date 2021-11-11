@@ -6,6 +6,7 @@ const db = require('./database')
 require('dotenv').config();
 const server = express();
 
+server.use(cors())
 server.use(morgan('dev'));
 server.use(cors());
 server.use(express.json());
