@@ -9,6 +9,9 @@ import Theme from "./Theme/ThemeFile.js"
 import Header from "./components/Header.jsx"
 import Mouse from "./components/Mouse.jsx"
 import QuizButton from './components/QuizButton.jsx'
+import Container from '@mui/material/Container';
+import Footer from './components/Footer.jsx'
+import ResultsPage from './components/ResultsPage.jsx'
 
 function App() {
   // const quizButtonClicked = useSelector(getQuizButtonClicked)
@@ -27,7 +30,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={Theme}>
-        <div id='stars'></div>
+        {/* <div id='stars'></div>
         <div id='stars2'></div>
         <div id='stars3'></div>
         <div
@@ -48,7 +51,11 @@ function App() {
         >
            <QuizButton />
         </Box>
-        </div>
+        </div> */}
+        <Container>
+            <ResultsPage />
+            <Footer />
+          </Container>
       </ThemeProvider>
     </>
   );

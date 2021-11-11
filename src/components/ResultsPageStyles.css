@@ -1,0 +1,29 @@
+h1 {
+    display:flex;
+    justify-content: center;
+  }
+
+  .buy-button {
+    display:flex;
+    justify-content: center;
+  }
+
+  .results-page {
+    background-color: white;
+    opacity: 0.8;
+  }
+
+  .product-name {
+    display: flex;
+    justify-content: center;
+    align-content: stretch;
+  }
+
+  .socialImages {
+    margin-right: 15px;
+    padding: 10px;
+  }
+
+  .social {
+    margin-top: 20px;
+  }

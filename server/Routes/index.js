@@ -5,6 +5,6 @@ const { getScrapeData } = require('../controllers/scrapeData.js')
 
 router.post('/addMouse', addMouse)
 router.get('/getAll', allMouse)
-router.get('/getScrapeData', getScrapeData)
+router.post('/getScrapeData', getScrapeData)
 
 module.exports = router;
