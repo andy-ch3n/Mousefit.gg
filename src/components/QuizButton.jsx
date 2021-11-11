@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setClicked, getClicked } from './redux/state/quizButtonClickedSlice.js';
 import Button from '@mui/material/Button'
 import QuizPage from './QuizPage.jsx'
+import Box from '@mui/material/Box';
 
 export default function QuizButton() {
   // const [buttonClicked, setButtonClicked] = useState(false)
