@@ -1,7 +1,6 @@
 // import ExamplePage from './components/ExamplePage.jsx'
 import React from "react"
 import { useSelector } from 'react-redux'
-import { setName, getName } from './components/redux/state/firstNameSlice.js';
 import { getClicked } from './components/redux/state/quizButtonClickedSlice.js'
 import { ThemeProvider } from "@mui/material/styles"
 import Box from '@mui/material/Box'
@@ -15,19 +14,50 @@ import Footer from './components/Footer.jsx'
 import ResultsPage from './components/ResultsPage.jsx'
 
 function App() {
+  // const quizButtonClicked = useSelector(getQuizButtonClicked)
+  const quizClicked = useSelector(getClicked);
+
+  const landingPage = () => {
+    if(!quizClicked.quizbuttonclicked) {
+      return (
+          <Mouse />
+      )
+    }
+    return (<></>)
+  }
 
   return (
     <>
       <ThemeProvider theme={Theme}>
+        <Header />
         <div id='stars'></div>
         <div id='stars2'></div>
         <div id='stars3'></div>
         <Header/>
-        <Grid container alignItems="center">
+        {/* <Grid container alignItems="center">
           <Grid item align='center' xs={12} sm={12} m={12}>
             <QuizButton />
           </Grid>
-        </Grid>
+        </Grid> */}
+        <div
+        style={{
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          alignItems: !quizClicked.quizbuttonclicked ? null : 'center',
+          justifyContent: !quizClicked.quizbuttonclicked ? null : 'center',
+          flexDirection: 'column',
+        }}
+        >
+          {landingPage()}
+        <Box
+          position= {!quizClicked.quizbuttonclicked ? 'absolute' : 'static' }
+          top= {!quizClicked.quizbuttonclicked ? '75%' : null}
+          left= {!quizClicked.quizbuttonclicked ? '44%' : null}
+          >
+           <QuizButton />
+        </Box>
+        </div>
       </ThemeProvider>
     </>
   );

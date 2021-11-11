@@ -22,18 +22,9 @@ function Header() {
   const classes = useStyles();
 
   return (
-    <Box sx={{ flex: '0 0 auto' }}>
+    <Box sx={{ position: 'fixed', width: '100%', top: 0, left: 0 }}>
       <AppBar position="static" color="primary">
         <Toolbar className={classes.customizeToolbar}>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <img src="MouseFitLogo.png" alt="logo" className={classes.logo} />
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
             Mousefit.gg
