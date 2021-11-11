@@ -101,7 +101,7 @@ export default function QuizPage() {
 				</div>
 				<div className='answer-section'>
 					{questions[currentQuestion].answerOptions.map((answerOption) => (
-						<button onClick={() => handleAnswerClick(answerOption.value, categoryType)}>{answerOption.answerText}</button>
+						<button className='answers-button' onClick={() => handleAnswerClick(answerOption.value, categoryType)}>{answerOption.answerText}</button>
 					))}
 				</div>
 			</div>
