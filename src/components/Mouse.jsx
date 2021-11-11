@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 function Mouse() {
   const modelRef = useRef();
 
@@ -94,9 +94,9 @@ function Mouse() {
 
     animate();
 
-    return () => {
-      modelRef.current.removeChild( renderer.domElement );
-    };
+    // return () => {
+    //   modelRef.current.removeChild( renderer.domElement );
+    // };
   }, [])
 
   return (
