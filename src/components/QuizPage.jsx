@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import '../QuizPage.scss';
 
 export default function QuizPage() {
 	const questions = [
@@ -90,7 +91,7 @@ export default function QuizPage() {
 	}
 
 	return (
-		<div className='app'>
+		<div className='quiz-app'>
 			<div style={{opacity: '1'}}>
 				<div className='question-section'>
 					<div className='question-count'>
