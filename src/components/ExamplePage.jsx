@@ -20,7 +20,7 @@ function ExamplePage() {
   }
 
   const handleButtonChange = () => {
-    dispatch(setName({ firstname: 'Andy'}));
+    dispatch(setName({ firstname: false}));
   }
 
   return (
@@ -31,13 +31,13 @@ function ExamplePage() {
       <Counter />
       <br />
       <br />
-      <input type="text" placeholder={firstName.firstname} onChange={handleChange} />
+      {firstName.firstname ? <input type="text" placeholder={firstName.firstname} onChange={handleChange} /> : null}
       <br />
       <br />
       <span>{firstName.firstname}</span>
       <br />
       <br />
-      <Button variant="contained" onClick={handleButtonChange}>Change first name to Andy</Button>
+      <Button variant="contained" onClick={handleButtonChange}>Change first name to false</Button>
       <br />
       <br />
       <span>{lastName.lastname}</span>
