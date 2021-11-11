@@ -35,8 +35,9 @@ li {
 body {
   margin: 0;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  background-color: #18191A
+  background-image: linear-gradient( 180.6deg,  rgba(15,2,2,1) 11.2%, rgba(36,163,190,1) 91.1% );
 }
+
 
 @keyframes gradient {
   0% {
