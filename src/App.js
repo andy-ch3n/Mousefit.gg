@@ -10,52 +10,24 @@ import Header from "./components/Header.jsx"
 import Mouse from "./components/Mouse.jsx"
 import QuizButton from './components/QuizButton.jsx'
 import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 import Footer from './components/Footer.jsx'
 import ResultsPage from './components/ResultsPage.jsx'
 
 function App() {
-  // const quizButtonClicked = useSelector(getQuizButtonClicked)
-  const quizClicked = useSelector(getClicked);
-
-  // const LandingPage = () => {
-  //   if(!quizClicked.quizbuttonclicked) {
-  //     return (
-  //           <Mouse />
-  //     )
-  //   }
-
-  //   return (null)
-  // }
 
   return (
     <>
       <ThemeProvider theme={Theme}>
-        {/* <div id='stars'></div>
+        <div id='stars'></div>
         <div id='stars2'></div>
         <div id='stars3'></div>
-        <div
-            style={{
-              width: '100vw',
-              height: '100vh',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-        <Header />
-        <Mouse />
-        <Box
-          textAlign='center'
-          position='absolute'
-          top='75%'
-          left='44%'
-        >
-           <QuizButton />
-        </Box>
-        </div> */}
-        <Container>
-            <ResultsPage />
-            <Footer />
-          </Container>
+        <Header/>
+        <Grid container alignItems="center">
+          <Grid item align='center' xs={12} sm={12} m={12}>
+            <QuizButton />
+          </Grid>
+        </Grid>
       </ThemeProvider>
     </>
   );
