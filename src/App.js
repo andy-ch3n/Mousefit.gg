@@ -16,6 +16,9 @@ function App() {
   return (
     <>
       <ThemeProvider theme={Theme}>
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
         <div
           style={{
             width: '100vw',
@@ -33,14 +36,8 @@ function App() {
           top='75%'
           left='40%'
         >
-          {/* <Button variant='contained'>
-            Take the survey
-          </Button> */}
            <QuizButton />
         </Box>
-          <div id='stars'></div>
-          <div id='stars2'></div>
-          <div id='stars3'></div>
       </ThemeProvider>
     </>
   );
