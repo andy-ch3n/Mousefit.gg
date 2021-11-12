@@ -54,6 +54,7 @@ function App() {
               left= {!quizClicked.quizbuttonclicked ? '50%' : null}
             >
                {!isQuizDone.done ? <QuizButton /> : <ResultsPage /> }
+               {/* <QuizButton /> */}
             </Box>
           </div>
           <Footer />
