@@ -43,21 +43,18 @@ function ResultsPage() {
   const scrapedYoutube = useSelector(getScrapedYoutube);
 
   function getWeightMeasure() {
-    if (
-      finalResult.finalmouse &&
-      finalResult.finalmouse.weight.$numberDouble < 60
-    ) {
+    if (finalResult.finalmouse && finalResult.finalmouse.weight < 60) {
       setWeightMeasure("very light (<60g)");
     } else if (
       finalResult.finalmouse &&
-      finalResult.finalmouse.weight.$numberDouble >= 60 &&
-      finalResult.finalmouse.weight.$numberDouble < 75
+      finalResult.finalmouse.weight >= 60 &&
+      finalResult.finalmouse.weight < 75
     ) {
       setWeightMeasure("light (60-75g)");
     } else if (
       finalResult.finalmouse &&
-      finalResult.finalmouse.weight.$numberDouble >= 75 &&
-      finalResult.finalmouse.weight.$numberDouble < 100
+      finalResult.finalmouse.weight >= 75 &&
+      finalResult.finalmouse.weight < 100
     ) {
       setWeightMeasure("medium, (75-100g)");
     } else {
@@ -66,15 +63,12 @@ function ResultsPage() {
   }
 
   function getSizeMeasure() {
-    if (
-      finalResult.finalmouse &&
-      finalResult.finalmouse.mouseSize.$numberDouble < 310000
-    ) {
+    if (finalResult.finalmouse && finalResult.finalmouse.mouseSize < 310000) {
       setSizeMeasure("small (<310,000mm^3)");
     } else if (
       finalResult.finalmouse &&
-      finalResult.finalmouse.mouseSize.$numberDouble >= 75 &&
-      finalResult.finalmouse.mouseSize.$numberDouble < 100
+      finalResult.finalmouse.mouseSize >= 75 &&
+      finalResult.finalmouse.mouseSize < 100
     ) {
       setSizeMeasure("medium, (310,000-370,000mm^3)");
     } else {
@@ -165,8 +159,7 @@ function ResultsPage() {
           </strong>
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {finalResult.finalmouse &&
-          finalResult.finalmouse.price.$numberDouble > 100 ? (
+          {finalResult.finalmouse && finalResult.finalmouse.price > 100 ? (
             <p>
               This is considered an <strong>expensive ($100+)</strong> price for
               a mouse.{" "}
