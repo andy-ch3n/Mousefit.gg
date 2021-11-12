@@ -23,7 +23,7 @@ function Header() {
 
   return (
     <Box sx={{ position: 'fixed', width: '100%', top: 0, left: 0 }}>
-      <AppBar position="static" color="primary">
+      <AppBar position="static" color="secondary">
         <Toolbar className={classes.customizeToolbar}>
           <img src="MouseFitLogo.png" alt="logo" className={classes.logo} />
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>

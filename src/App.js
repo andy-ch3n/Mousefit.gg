@@ -1,6 +1,7 @@
 import React from "react"
 import { useSelector } from 'react-redux'
 import { getClicked } from './components/redux/state/quizButtonClickedSlice.js'
+import { getIsQuizDone } from './components/redux/state/isQuizDoneSlice.js';
 import { ThemeProvider } from "@mui/material/styles"
 import Box from '@mui/material/Box'
 import Theme from "./Theme/ThemeFile.js"
@@ -13,8 +14,8 @@ import Footer from './components/Footer.jsx'
 import ResultsPage from './components/ResultsPage.jsx'
 
 function App() {
-  // const quizButtonClicked = useSelector(getQuizButtonClicked)
   const quizClicked = useSelector(getClicked);
+  const isQuizDone = useSelector(getIsQuizDone);
 
   const landingPage = () => {
     if(!quizClicked.quizbuttonclicked) {
@@ -32,7 +33,7 @@ function App() {
         <div id='stars'></div>
         <div id='stars2'></div>
         <div id='stars3'></div>
-        {/* <Header/>
+        <Header/>
         <div
         style={{
           width: '100vw',
@@ -49,10 +50,12 @@ function App() {
           top= {!quizClicked.quizbuttonclicked ? '75%' : null}
           left= {!quizClicked.quizbuttonclicked ? '44%' : null}
           >
-           <QuizButton />
+            <QuizButton />
+           {/* {!isQuizDone.done ? <QuizButton /> : <ResultsPage /> } */}
         </Box>
-        </div> */}
-           <ResultsPage />
+        </div>
+           {/* {isQuizDone.done ? <ResultsPage /> : null} */}
+           {/* <ResultsPage /> */}
            <Footer/>
       </ThemeProvider>
     </>

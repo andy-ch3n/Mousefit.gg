@@ -65,30 +65,6 @@ h1 {
   line-height: 1.1;
 }
 
-body {
-  background: hsl(204 100% 5%);
-  min-block-size: 100%;
-  min-inline-size: 100%;
-  box-sizing: border-box;
-  display: grid;
-  place-content: center;
-  font-family: system-ui;
-  font-size: min(100%, 3vmin);
-}
-
-h1, p, body {
-  margin: 0;
-}
-
-p {
-  font-family: "Dank Mono", ui-monospace, monospace;
-}
-
-html {
-  block-size: 100%;
-  inline-size: 100%;
-}
-
 .footerClass {
   align-content: center;
 }

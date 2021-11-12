@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setFinalMouse, getFinalMouse } from './redux/state/finalMouseSlice.js';
 import { setScrapedData, getScrapedData } from './redux/state/scrapedDataSlice.js';
 import { setIsQuizDone, getIsQuizDone } from './redux/state/isQuizDoneSlice.js';
+import { setRelatedMouse, getRelatedMouse } from './redux/state/relatedMouseSlice.js';
 
 export default function QuizPage() {
 	const questions = [
@@ -51,6 +52,7 @@ export default function QuizPage() {
 	const isQuizDone = useSelector(getIsQuizDone);
 	const finalMouse = useSelector(getFinalMouse);
 	const scrapedData = useSelector(getScrapedData);
+	const relatedMice = useSelector(getRelatedMouse);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -63,6 +65,7 @@ export default function QuizPage() {
 
 	useEffect(() => {
 		if (finalMouse.finalmouse.amazonLink !== undefined) {
+			getRelatedMice();
 			getScrapedMouse();
 		}
 	}, [finalMouse])
@@ -122,6 +125,11 @@ export default function QuizPage() {
 
 	function randomFinalMouse(arr) {
     return arr[Math.floor(arr.length * Math.random())];
+	}
+
+	function getRelatedMice() {
+		const relatedList = mouseList.filter(mouse => (mouse.amazonLink !== finalMouse.finalmouse.amazonLink))
+		dispatch(setRelatedMouse({ relatedmouse: relatedList}))
 	}
 
 		return (
