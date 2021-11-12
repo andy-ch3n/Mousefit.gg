@@ -30,33 +30,34 @@ function App() {
   return (
     <>
       <ThemeProvider theme={Theme}>
-        <div id='stars'></div>
-        <div id='stars2'></div>
-        <div id='stars3'></div>
-        <Header/>
-        <div
-        style={{
-          width: '100vw',
-          height: '100vh',
-          display: 'flex',
-          alignItems: !quizClicked.quizbuttonclicked ? null : 'center',
-          justifyContent: !quizClicked.quizbuttonclicked ? null : 'center',
-          flexDirection: 'column',
-        }}
-        >
-          {landingPage()}
-        <Box
-          position= {!quizClicked.quizbuttonclicked ? 'absolute' : 'static' }
-          top= {!quizClicked.quizbuttonclicked ? '75%' : null}
-          left= {!quizClicked.quizbuttonclicked ? '44%' : null}
-          >
-            <QuizButton />
-           {/* {!isQuizDone.done ? <QuizButton /> : <ResultsPage /> } */}
-        </Box>
+        <div className='stupid-star-animation'>
+          <div id='stars'></div>
+          <div id='stars2'></div>
+          <div id='stars3'></div>
         </div>
-           {/* {isQuizDone.done ? <ResultsPage /> : null} */}
-           {/* <ResultsPage /> */}
-           <Footer/>
+        <div className='body-container-wrapper-thing'>
+          <Header/>
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              alignItems: !quizClicked.quizbuttonclicked ? null : 'center',
+              justifyContent: !quizClicked.quizbuttonclicked ? null : 'center',
+              flexDirection: 'column',
+            }}
+          >
+            {landingPage()}
+            <Box
+              position= {!quizClicked.quizbuttonclicked ? 'absolute' : 'static' }
+              bottom= {!quizClicked.quizbuttonclicked ? '35%' : null}
+              left= {!quizClicked.quizbuttonclicked ? '50%' : null}
+            >
+               {!isQuizDone.done ? <QuizButton /> : <ResultsPage /> }
+            </Box>
+          </div>
+          <Footer />
+        </div>
       </ThemeProvider>
     </>
   );
