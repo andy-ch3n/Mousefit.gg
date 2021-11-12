@@ -5,7 +5,6 @@ import { setLastName, getLastName } from './redux/state/lastNameSlice.js'
 import Counter from '../components/helpers/Counter.jsx';
 import Button from '@mui/material/Button';
 
-
 function ExamplePage() {
   const firstName = useSelector(getName);
   const lastName = useSelector(getLastName);

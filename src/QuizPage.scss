@@ -1,3 +1,9 @@
+// body {
+//   margin: 0;
+//   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+//   background-image: linear-gradient( 180.6deg,  rgba(15,2,2,1) 11.2%, rgba(36,163,190,1) 91.1% );
+// }
+
 .quiz-app {
   background-color: #01294B;
   width: 450px;
@@ -6,23 +12,30 @@
   border-radius: 15px;
   padding: 20px;
   box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  margin: 0;
 }
 
 /* QUESTION/TIMER/LEFT SECTION */
 .question-section {
   width: 100%;
+  color: #ffffff;
 }
 
 .question-count {
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .question-count span {
   font-size: 28px;
+  color: #ffffff;
 }
 
 .question-text {
   margin-bottom: 12px;
+  font-style: italic;
+  padding: 15px;
+  color: #ffffff;
 }
 
 /* ANSWERS/RIGHT SECTION */
@@ -30,6 +43,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  color: #ffffff;
   // justify-content: space-between;
 }
 

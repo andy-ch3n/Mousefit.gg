@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 export const finalMouse = createSlice({
     name: 'finalMouse',
     initialState: {
-        value: { finalmouse: {}, scrapeData: {}, finalmouselist: {} },
+        value: { finalmouse: {} },
     },
     reducers: {
         setFinalMouse: (state, action) => {
