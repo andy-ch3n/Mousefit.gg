@@ -29,11 +29,10 @@ function App() {
   return (
     <>
       <ThemeProvider theme={Theme}>
-        {/* <Header />
         <div id='stars'></div>
         <div id='stars2'></div>
         <div id='stars3'></div>
-        <Header/>
+        {/* <Header/>
         <div
         style={{
           width: '100vw',
@@ -50,10 +49,11 @@ function App() {
           top= {!quizClicked.quizbuttonclicked ? '75%' : null}
           left= {!quizClicked.quizbuttonclicked ? '44%' : null}
           >
-           <QuizButton /> */}
+           <QuizButton />
+        </Box>
+        </div> */}
            <ResultsPage />
-        {/* </Box> */}
-        {/* </div> */}
+           <Footer/>
       </ThemeProvider>
     </>
   );
