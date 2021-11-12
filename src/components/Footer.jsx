@@ -16,7 +16,7 @@ function Copyright() {
       color="#FFFFFF"
       align="center"
     >
-      {"LiquidHackathon II. Mousefit.gg - Copyright © "}
+      {"Liquid Hackathon II Mousefit.gg - Copyright © "}
       {new Date().getFullYear()}
       {"."}
     </Typography>
