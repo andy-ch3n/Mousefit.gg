@@ -189,16 +189,19 @@ export default function QuizPage() {
           </Typography>
         </div>
         <Typography className="answer-section" component="div">
-          {questions[currentQuestion].answerOptions.map((answerOption) => (
-            <Button
-              className="answers-button"
-              onClick={() =>
-                handleAnswerClick(answerOption.value, categoryType)
-              }
-            >
-              {answerOption.answerText}
-            </Button>
-          ))}
+          {questions[currentQuestion].answerOptions.map(
+            (answerOption, index) => (
+              <Button
+                className="answers-button"
+                key={index}
+                onClick={() =>
+                  handleAnswerClick(answerOption.value, categoryType)
+                }
+              >
+                {answerOption.answerText}
+              </Button>
+            )
+          )}
         </Typography>
       </div>
     </Typography>

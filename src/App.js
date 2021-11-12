@@ -66,7 +66,11 @@ function App() {
           <div
             style={{
               width: "100%",
-              height: "100%",
+              height:
+                !quizClicked.quizbuttonclicked ||
+                (scrapedYoutube.isLoading && scrapedData.isLoading)
+                  ? "100%"
+                  : null,
               display: "flex",
               alignItems: !quizClicked.quizbuttonclicked ? null : "center",
               justifyContent: !quizClicked.quizbuttonclicked ? null : "center",
