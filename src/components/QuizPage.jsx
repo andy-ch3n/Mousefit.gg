@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFinalMouse, getFinalMouse } from './redux/state/finalMouseSlice.js';
+import { setScrapedData, getScrapedData } from './redux/state/scrapedDataSlice.js';
+import { setIsQuizDone, getIsQuizDone } from './redux/state/isQuizDoneSlice.js';
+import { setRelatedMouse, getRelatedMouse } from './redux/state/relatedMouseSlice.js';
 
 export default function QuizPage() {
 	const questions = [
@@ -44,7 +49,10 @@ export default function QuizPage() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [categoryType, setCategoryType] = useState('');
 	const [mouseList, setMouseList] = useState([]);
+	const isQuizDone = useSelector(getIsQuizDone);
 	const finalMouse = useSelector(getFinalMouse);
+	const scrapedData = useSelector(getScrapedData);
+	const relatedMice = useSelector(getRelatedMouse);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -54,6 +62,25 @@ export default function QuizPage() {
 	useEffect(() => {
 		setCategoryType(questions[currentQuestion].type);
 	}, [currentQuestion])
+
+	useEffect(() => {
+		if (finalMouse.finalmouse.amazonLink !== undefined) {
+			getRelatedMice();
+			getScrapedMouse();
+		}
+	}, [finalMouse])
+
+	const getScrapedMouse = () => {
+    const requestOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ url: finalMouse.finalmouse.amazonLink })
+	};
+
+	fetch('http://localhost:1337/api/getScrapeData', requestOptions)
+			.then(response => response.json())
+			.then(data => dispatch(setScrapedData({ data: data })));
+	}
 
 	const getMouseList = () => {
 		fetch("http://localhost:1337/api/getAll")
@@ -77,7 +104,6 @@ export default function QuizPage() {
 			filteredList = mouseList.filter(mouse => (mouse[type] >= filterTerm[0] && mouse[type] <= filterTerm[1]))
 		} else if (type === 'mouseSize') {
 			filteredList = mouseList.filter(mouse => (mouse[type] >= filterTerm[0] && mouse[type] <= filterTerm[1]))		}
-
 		setMouseList(filteredList);
 	}
 
@@ -85,6 +111,10 @@ export default function QuizPage() {
 		filterMouseList(filterTerm, type)
 
 		const nextQuestion = currentQuestion + 1;
+		if (nextQuestion === questions.length) {
+			dispatch(setIsQuizDone({done: true}))
+		}
+
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
@@ -97,21 +127,27 @@ export default function QuizPage() {
     return arr[Math.floor(arr.length * Math.random())];
 	}
 
-	return (
-		<div className='quiz-app'>
-			<div style={{opacity: '1'}}>
-				<div className='question-section'>
-					<div className='question-count'>
-						<span>Question {currentQuestion + 1}</span>/{questions.length}
+	function getRelatedMice() {
+		const relatedList = mouseList.filter(mouse => (mouse.amazonLink !== finalMouse.finalmouse.amazonLink))
+		dispatch(setRelatedMouse({ relatedmouse: relatedList}))
+	}
+
+		return (
+				<Typography className='quiz-app' component="div">
+				<div style={{opacity: '1'}}>
+					<div className='question-section'>
+						<Typography className='question-count' component="div">
+							<span>Question {currentQuestion + 1}</span>/{questions.length}
+						</Typography>
+						<Typography className='question-text'>{questions[currentQuestion].questionText}
+						</Typography>
 					</div>
-					<div className='question-text'>{questions[currentQuestion].questionText}</div>
+					<Typography className='answer-section' component="div">
+						{questions[currentQuestion].answerOptions.map((answerOption) => (
+							<Button className='answers-button' onClick={() => handleAnswerClick(answerOption.value, categoryType)}>{answerOption.answerText}</Button>
+						))}
+					</Typography>
 				</div>
-				<div className='answer-section'>
-					{questions[currentQuestion].answerOptions.map((answerOption) => (
-						<button className='answers-button' onClick={() => handleAnswerClick(answerOption.value, categoryType)}>{answerOption.answerText}</button>
-					))}
-				</div>
-			</div>
-	 </div>
-	);
+		 </Typography>
+		);
 }
