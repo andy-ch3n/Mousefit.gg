@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background-image: linear-gradient( 180.6deg,  rgba(15,2,2,1) 11.2%, rgba(36,163,190,1) 91.1% );
+}
+
 .quiz-app {
   background-color: #01294B;
   width: 450px;
@@ -6,6 +12,7 @@
   border-radius: 15px;
   padding: 20px;
   box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  margin: 0;
 }
 
 /* QUESTION/TIMER/LEFT SECTION */
@@ -23,6 +30,7 @@
 
 .question-text {
   margin-bottom: 12px;
+  font-style: italic;
 }
 
 /* ANSWERS/RIGHT SECTION */
