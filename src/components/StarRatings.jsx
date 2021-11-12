@@ -11,7 +11,7 @@ function Star(props) {
       starSpacing={"2px"}
       rating={scrapedData.data.rating}
       numberOfStars={5}
-      starRatedColor="blue"
+      starRatedColor="rgb(0,128,128)"
       starDimension="20px"
       className="star-rating"
     />
