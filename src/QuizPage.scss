@@ -18,19 +18,23 @@ body {
 /* QUESTION/TIMER/LEFT SECTION */
 .question-section {
   width: 100%;
+  color: #ffffff;
 }
 
 .question-count {
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .question-count span {
   font-size: 28px;
+  color: #ffffff;
 }
 
 .question-text {
   margin-bottom: 12px;
   font-style: italic;
+  color: #ffffff;
 }
 
 /* ANSWERS/RIGHT SECTION */
@@ -38,6 +42,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  color: #ffffff;
   // justify-content: space-between;
 }
 

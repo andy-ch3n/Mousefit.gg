@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFinalMouse, getFinalMouse } from './redux/state/finalMouseSlice.js';
 import { setScrapedData, getScrapedData } from './redux/state/scrapedDataSlice.js';
@@ -123,20 +125,21 @@ export default function QuizPage() {
 	}
 
 		return (
-			<div className='quiz-app'>
+				<Typography className='quiz-app' component="div">
 				<div style={{opacity: '1'}}>
 					<div className='question-section'>
-						<div className='question-count'>
+						<Typography className='question-count' component="div">
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
-						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						</Typography>
+						<Typography className='question-text'>{questions[currentQuestion].questionText}
+						</Typography>
 					</div>
-					<div className='answer-section'>
+					<Typography className='answer-section' component="div">
 						{questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button className='answers-button' onClick={() => handleAnswerClick(answerOption.value, categoryType)}>{answerOption.answerText}</button>
+							<Button className='answers-button' onClick={() => handleAnswerClick(answerOption.value, categoryType)}>{answerOption.answerText}</Button>
 						))}
-					</div>
+					</Typography>
 				</div>
-		 </div>
+		 </Typography>
 		);
 }
