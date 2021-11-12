@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   FacebookIcon,
   TwitterIcon,
@@ -6,9 +6,7 @@ import {
   FacebookShareButton,
   TwitterShareButton,
   PinterestShareButton,
-} from "react-share"
-
-import ResultsPageStyles from "./ResultsPageStyles.css"
+} from "react-share";
 
 function ShareSocial() {
   return (
@@ -38,7 +36,7 @@ function ShareSocial() {
         <PinterestIcon size={32} round />
       </PinterestShareButton>
     </>
-  )
+  );
 }
 
-export default ShareSocial
+export default ShareSocial;
