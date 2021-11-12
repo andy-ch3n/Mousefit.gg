@@ -18,7 +18,7 @@ export const Theme = createTheme({
     }
   },
   typography: {
-    "fontFamily": `"KANEDA GOTHIC REGULAR", sans-serif`,
+    "fontFamily": 'KANEDA GOTHIC REGULAR, sans-serif',
     "fontSize": 14,
     "fontWeightLight": 300,
     "fontWeightRegular": 400,

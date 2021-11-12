@@ -70,9 +70,9 @@ function Mouse() {
     scene.add( directionalLight );
 
 
-    // Camera Position
-
-    camera.position.set(0, .4, 3);
+    // Camera Position and properties
+    camera.position.set(0, 0.2, 3);
+    camera.lookAt(0, -0.2, 0);
 
     // const controls = new OrbitControls( camera, renderer.domElement );
 
@@ -106,12 +106,12 @@ function Mouse() {
         position: 'relative'
       }}
     >
-      <h1 className="main-header">Find the perfect gaming mouse</h1>
+      <p className="main-header">Find the perfect gaming mouse</p>
       <div
         ref={modelRef}
         style={{
           position: 'absolute',
-          top: -250,
+          top: 0,
           bottom: 0,
           left: 0,
           right: 0,
