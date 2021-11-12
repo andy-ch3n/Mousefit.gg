@@ -10,8 +10,7 @@ h1 {
 
   .results-page {
     background-color: #f8f8ff;
-    opacity: 0.9;
-    padding-bottom: 180px;
+    opacity: 1;
   }
 
   .product-name {
@@ -29,13 +28,6 @@ h1 {
     margin-top: 20px;
   }
 
-  #container {
-  border: 12px solid #B22222;
-  border-radius: 10px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  }
-
   .related1 {
     width: 75%;
     margin-left: 40px;
@@ -47,7 +39,6 @@ h1 {
 .relatedMouse {
   text-decoration: underline;
 }
-
 
 article {
   background: linear-gradient(
@@ -65,28 +56,12 @@ h1 {
   line-height: 1.1;
 }
 
-body {
-  background: hsl(204 100% 5%);
-  min-block-size: 100%;
-  min-inline-size: 100%;
-  box-sizing: border-box;
-  display: grid;
-  place-content: center;
-  font-family: system-ui;
-  font-size: min(100%, 3vmin);
-}
-
 h1, p, body {
   margin: 0;
 }
 
 p {
   font-family: "Dank Mono", ui-monospace, monospace;
-}
-
-html {
-  block-size: 100%;
-  inline-size: 100%;
 }
 
 .footerClass {

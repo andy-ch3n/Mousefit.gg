@@ -20,7 +20,7 @@ export default function QuizButton() {
 
   return (
     <>
-    {(quizClicked.quizbuttonclicked) ? <QuizPage/> : <Button variant="contained" onClick={handleButtonClick}>Take the Quiz</Button>}
+    {(quizClicked.quizbuttonclicked) ? <QuizPage/> : <Button style={{ transform: 'translate(-50%)' }}variant="contained" onClick={handleButtonClick}>Take the Quiz</Button>}
     </>
   )
 }
