@@ -7,7 +7,8 @@ import quizButtonClickedReducer from './state/quizButtonClickedSlice';
 import finalMouseReducer from './state/finalMouseSlice';
 import scrapedDataReducer from './state/scrapedDataSlice';
 import isQuizDoneReducer from './state/isQuizDoneSlice';
-import relatedMouseReducer from './state/relatedMouseSlice'
+import relatedMouseReducer from './state/relatedMouseSlice';
+import scrapedYoutubeReducer from './state/scrapedYoutubeSlice';
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   scrapedData: scrapedDataReducer,
   isQuizDone: isQuizDoneReducer,
   relatedMouse: relatedMouseReducer,
+  scrapedYoutube: scrapedYoutubeReducer,
 });
 
 export default rootReducer;

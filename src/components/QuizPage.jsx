@@ -6,6 +6,7 @@ import { setFinalMouse, getFinalMouse } from './redux/state/finalMouseSlice.js';
 import { setScrapedData, getScrapedData } from './redux/state/scrapedDataSlice.js';
 import { setIsQuizDone, getIsQuizDone } from './redux/state/isQuizDoneSlice.js';
 import { setRelatedMouse, getRelatedMouse } from './redux/state/relatedMouseSlice.js';
+import { setScrapedYoutube, getScrapedYoutube } from './redux/state/scrapedYoutubeSlice.js';
 
 export default function QuizPage() {
 	const questions = [
@@ -53,6 +54,7 @@ export default function QuizPage() {
 	const finalMouse = useSelector(getFinalMouse);
 	const scrapedData = useSelector(getScrapedData);
 	const relatedMice = useSelector(getRelatedMouse);
+	const scrapedYoutube = useSelector(getScrapedYoutube);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -66,6 +68,7 @@ export default function QuizPage() {
 	useEffect(() => {
 		if (finalMouse.finalmouse.amazonLink !== undefined) {
 			getRelatedMice();
+			getYoutubeVid();
 			getScrapedMouse();
 		}
 	}, [finalMouse])
@@ -80,6 +83,18 @@ export default function QuizPage() {
 	fetch('http://localhost:1337/api/getScrapeData', requestOptions)
 			.then(response => response.json())
 			.then(data => dispatch(setScrapedData({ data: data })));
+	}
+
+	const getYoutubeVid = () => {
+    const requestOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ mouse: finalMouse.finalmouse.productName})
+	};
+
+	fetch('http://localhost:1337/api/getLink', requestOptions)
+			.then(response => response.json())
+			.then(data => dispatch(setScrapedYoutube({ data: data })));
 	}
 
 	const getMouseList = () => {
