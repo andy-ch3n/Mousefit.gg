@@ -6,7 +6,7 @@ function Star(props) {
   return (
     <StarRatings
       starSpacing={"2px"}
-      rating={5}
+      rating={4}
       numberOfStars={5}
       starDimension="15px"
       className="star-rating"

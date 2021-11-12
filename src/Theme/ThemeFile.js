@@ -4,10 +4,10 @@ export const Theme = createTheme({
   palette: {
     type: "light",
     primary: {
-      main: "#012a4a",
+      main: "#031422",
     },
     secondary: {
-      main: "#468faf",
+      main: "#0C223E",
     },
     neutral: {
       main: '#a9d6e5',
@@ -18,11 +18,11 @@ export const Theme = createTheme({
     }
   },
   typography: {
-    "fontFamily": `"Orbitron", sans-serif`,
+    "fontFamily": `"KANEDA GOTHIC REGULAR", sans-serif`,
     "fontSize": 14,
     "fontWeightLight": 300,
     "fontWeightRegular": 400,
     "fontWeightMedium": 500
-  }
+  },
 });
 export default Theme;

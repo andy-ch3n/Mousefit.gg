@@ -29,11 +29,10 @@ function App() {
   return (
     <>
       <ThemeProvider theme={Theme}>
-        <Header />
         <div id='stars'></div>
         <div id='stars2'></div>
         <div id='stars3'></div>
-        <Header/>
+        {/* <Header/>
         <div
         style={{
           width: '100vw',
@@ -52,7 +51,9 @@ function App() {
           >
            <QuizButton />
         </Box>
-        </div>
+        </div> */}
+           <ResultsPage />
+           <Footer/>
       </ThemeProvider>
     </>
   );
