@@ -15,7 +15,6 @@ function ShareSocial() {
     <>
       <FacebookShareButton
         url={"https://peing.net/ja/"}
-        quote={"フェイスブックはタイトルが付けれるようです"}
         hashtag={"#hashtag"}
         description={"aiueo"}
         className="socialImages"
