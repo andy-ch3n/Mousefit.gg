@@ -1,22 +1,21 @@
-import React, { useState } from "react"
-import StarRatings from "react-star-ratings"
-import { setScrapedData, getScrapedData } from './redux/state/scrapedDataSlice.js';
+import React from "react";
+import StarRatings from "react-star-ratings";
+import { getScrapedData } from "./redux/state/scrapedDataSlice.js";
 import { useSelector } from "react-redux";
 
-
 function Star(props) {
-
-const scrapedData = useSelector(getScrapedData);
+  const scrapedData = useSelector(getScrapedData);
 
   return (
     <StarRatings
       starSpacing={"2px"}
       rating={scrapedData.data.rating}
       numberOfStars={5}
-      starDimension="15px"
+      starRatedColor="blue"
+      starDimension="20px"
       className="star-rating"
     />
-  )
+  );
 }
 
-export default Star
+export default Star;

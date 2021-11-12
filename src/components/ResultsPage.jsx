@@ -5,30 +5,24 @@ import {
   Grid,
   Container,
   Box,
-  Stack,
   Card,
   CardContent,
   styled,
-  Typography
+  Paper,
+  Typography,
 } from "@mui/material";
-import Paper from "@mui/material/Paper";
 import "./ResultsPageStyles.css";
-import dummydata1 from "./dummydata.js";
-import { ReactTinyLink } from "react-tiny-link";
 import ReactPlayer from "react-player";
 import StarRatings from "./StarRatings.jsx";
 import ShareButton from "./ShareButton.jsx";
-import Header from "./Header.jsx";
-import { setFinalMouse, getFinalMouse } from "./redux/state/finalMouseSlice.js";
+import { getFinalMouse } from "./redux/state/finalMouseSlice.js";
 import PanToolOutlinedIcon from "@mui/icons-material/PanToolOutlined";
 import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined";
-import PermDataSettingIcon from "@mui/icons-material/PermDataSetting";
 import AspectRatioIcon from "@mui/icons-material/AspectRatio";
 import ControlPointDuplicateIcon from "@mui/icons-material/ControlPointDuplicate";
-import Footer from "./Footer.jsx";
-import { setScrapedData, getScrapedData } from './redux/state/scrapedDataSlice.js';
-import { setRelatedMouse, getRelatedMouse } from './redux/state/relatedMouseSlice.js';
-import { setScrapedYoutube, getScrapedYoutube } from './redux/state/scrapedYoutubeSlice.js';
+import { getScrapedData } from "./redux/state/scrapedDataSlice.js";
+import { getRelatedMouse } from "./redux/state/relatedMouseSlice.js";
+import { getScrapedYoutube } from "./redux/state/scrapedYoutubeSlice.js";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -41,44 +35,86 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function ResultsPage() {
-  const [dummyData, setDummyData] = useState([]);
-  const [productData, setProductData] = useState("");
-
-  const [productURL, setProductURL] = useState("");
-  const [mouseData, setMouseData] = useState("");
-  const [scraped, setScraped] = useState("");
-
+  const [weightMeasure, setWeightMeasure] = useState("");
+  const [sizeMeasure, setSizeMeasure] = useState("");
   const finalResult = useSelector(getFinalMouse);
   const scrapedData = useSelector(getScrapedData);
-	const relatedMice = useSelector(getRelatedMouse);
-	const scrapedYoutube = useSelector(getScrapedYoutube);
+  const relatedMice = useSelector(getRelatedMouse);
+  const scrapedYoutube = useSelector(getScrapedYoutube);
 
-  function getMouseData() {
-    setProductData(dummydata1.data[0]);
+  function getWeightMeasure() {
+    if (
+      finalResult.finalmouse &&
+      finalResult.finalmouse.weight.$numberDouble < 60
+    ) {
+      setWeightMeasure("very light (<60g)");
+    } else if (
+      finalResult.finalmouse &&
+      finalResult.finalmouse.weight.$numberDouble >= 60 &&
+      finalResult.finalmouse.weight.$numberDouble < 75
+    ) {
+      setWeightMeasure("light (60-75g)");
+    } else if (
+      finalResult.finalmouse &&
+      finalResult.finalmouse.weight.$numberDouble >= 75 &&
+      finalResult.finalmouse.weight.$numberDouble < 100
+    ) {
+      setWeightMeasure("medium, (75-100g)");
+    } else {
+      setWeightMeasure("heavy, (100g+)");
+    }
+  }
+
+  function getSizeMeasure() {
+    if (
+      finalResult.finalmouse &&
+      finalResult.finalmouse.mouseSize.$numberDouble < 310000
+    ) {
+      setSizeMeasure("small (<310,000mm^3)");
+    } else if (
+      finalResult.finalmouse &&
+      finalResult.finalmouse.mouseSize.$numberDouble >= 75 &&
+      finalResult.finalmouse.mouseSize.$numberDouble < 100
+    ) {
+      setSizeMeasure("medium, (310,000-370,000mm^3)");
+    } else {
+      setSizeMeasure("large, (350,000mm^3+)");
+    }
   }
 
   function handleClick() {
-    window.location.assign(`${productData.amazonLink}`);
+    window.location.assign(`${finalResult.finalmouse.amazonLink}`);
   }
 
   useEffect(() => {
-    getMouseData();
+    getWeightMeasure();
+    getSizeMeasure();
   }, []);
-
 
   const grip = (
     <React.Fragment>
       <CardContent>
         <Typography variant="h6" component="div">
-          Mouse made for {productData && productData.mouseGrip.replace(/\[|\]/g,'')} users
+          Mouse made for{" "}
+          {finalResult.finalmouse &&
+            finalResult.finalmouse.mouseGrip[0].replace(/\[|\]/g, "")}{" "}
+          users
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          Palm grip is the most widely used mouse grip.
+          {finalResult.finalmouse &&
+          finalResult.finalmouse.mouseGrip[0].includes("palm") ? (
+            <p> Palm grip is the most widely used mouse grip.</p>
+          ) : (
+            <p> Claw is the second most widely used mouse grip. </p>
+          )}
         </Typography>
+        <br />
         <Typography variant="body2">
           <br />
           <div className="ital">
-          {"It is most popularly used in FPS games."}
+            {
+              "ProTip: FPS gamers most commonly use the palm grip. MOBA gamers are most commonly claw grip."
+            }
           </div>
         </Typography>
       </CardContent>
@@ -89,16 +125,23 @@ function ResultsPage() {
     <React.Fragment>
       <CardContent>
         <Typography variant="h6" component="div">
-          Considered a <strong>Heavy</strong> (>100g) mouse.
+          Considered a <strong>{weightMeasure}</strong> mouse.
         </Typography>
+        <br />
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          Classified as a <strong>Large size (>222222mm) </strong>
+          Mouse is <strong>{sizeMeasure}</strong>
+          <br />
+          <br />
+          <div>
+            Calculated using <strong> Length x Width x Height</strong>
+          </div>
         </Typography>
         <Typography variant="body2">
           <br />
           <div className="ital">
-          {`The heavier the mouse, the higher one's in-game sensitivity should be`}
+            {`ProTip: The heavier the mouse, the higher one's in-game sensitivity should generally be.`}
           </div>
+          <br />
         </Typography>
       </CardContent>
     </React.Fragment>
@@ -108,36 +151,35 @@ function ResultsPage() {
     <React.Fragment>
       <CardContent>
         <Typography variant="h6" component="div">
-          Available in {productData && productData.interface.replace(/\[|\]/g,'')}.
+          Available in{" "}
+          {finalResult.finalmouse &&
+            finalResult.finalmouse.interface[0].replace(/\[|\]/g, "")}
+          .
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          Made by {productData && productData.productName.split(" ")[0]}
-        </Typography>
-        <Typography variant="body2">
-        <div className="ital">
-          {"People rated this mouse averageMouseRating out of 5 on Amazon"}
-          </div>
           <br />
-        </Typography>
-      </CardContent>
-    </React.Fragment>
-  );
-
-  const related = (
-    <React.Fragment>
-      <CardContent>
-        <Typography variant="h6" component="div">
-          Available in {productData.interface}.
+          Made by{" "}
+          <strong>
+            {finalResult.finalmouse &&
+              finalResult.finalmouse.productName.split(" ")[0]}
+          </strong>
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          Made by brandNameSliced
+          {finalResult.finalmouse &&
+          finalResult.finalmouse.price.$numberDouble > 100 ? (
+            <p>
+              This is considered an <strong>expensive ($100+)</strong> price for
+              a mouse.{" "}
+            </p>
+          ) : (
+            <p>
+              This is considered an <strong>average</strong> price for a mouse.
+            </p>
+          )}
         </Typography>
-        <br />
         <Typography variant="body2">
-          <br />
-          <br />
           <div className="ital">
-          People rated this mouse averageMouseRating out of 5 on Amazon
+            {`ProTip: People rated this mouse ${scrapedData.data.rating} out of 5 on Amazon`}
           </div>
           <br />
         </Typography>
@@ -155,7 +197,7 @@ function ResultsPage() {
           justifyContent: "center",
           padding: "30px",
           borderColor: "primary.main",
-          borderRadius: '50%'
+          borderRadius: "50%",
         }}
       >
         <div className="results-page">
@@ -171,10 +213,10 @@ function ResultsPage() {
           >
             <Grid item xs={8}>
               <Item className="name">
-                <h2 className="product-header">
+                <h2 className="gradient-name">
                   {" "}
-                  {productData && productData.productName} - {" "}
-                  {productData && productData.price.$numberDouble}{" "}
+                  {finalResult.finalmouse.productName} -{" "}
+                  {finalResult.finalmouse && finalResult.finalmouse.price}{" "}
                 </h2>
               </Item>
               <div className="product-name">
@@ -186,27 +228,27 @@ function ResultsPage() {
                   width: "100%",
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center"
+                  alignItems: "center",
                 }}
               >
                 <Box
                   component="img"
-                  alt={`Everything you need to know about ${productData.productName}`}
-                  // src={scrapedData.data.image}
+                  alt={`Everything you need to know about ${finalResult.finalmouse.productName}`}
                   sx={{
                     height: "100%",
                     width: "150px",
-                    opacity: "0.9"
+                    opacity: "0.9",
                   }}
-                  src={"https://m.media-amazon.com/images/I/5152oFkzhLL._AC_SY450_.jpg"}
+                  src={`${scrapedData.data.image}`}
+                  // instead src={scrapedData.data.image}
                 />
               </Box>
-              <p className="product-name">
+              <div className="social-stars">
                 <div className="product-stars">
-                <StarRatings />
+                  <StarRatings />
                 </div>
                 <ShareButton />
-              </p>
+              </div>
               <br />
               <div className="product-name">
                 <Button
@@ -224,8 +266,8 @@ function ResultsPage() {
               <Item className="reactPlayer">
                 <ReactPlayer
                   width="525px"
-                  // url={scrapedYoutube.data[0].link}
-                  url={"https://www.youtube.com/watch?v=FGwzq4UMnVs&list=RDFGwzq4UMnVs&start_radio=1&ab_channel=Ti%C3%ABsto"}
+                  // instead url={scrapedYoutube.data[0].link}
+                  url={scrapedYoutube.data[0].link}
                 />
               </Item>
               <br />
@@ -235,7 +277,16 @@ function ResultsPage() {
                   <ControlPointDuplicateIcon /> <strong>
                     Related Mouses
                   </strong>{" "}
-                {(relatedMice.relatedmouse.length >= 1 && relatedMice.relatedmouse.length) < 3 ? <p>{relatedMice.relatedmouse.map(result => result.productName)}</p> : <p> No related products to display</p>}
+                  {(relatedMice.relatedmouse.length >= 1 &&
+                    relatedMice.relatedmouse.length) < 3 ? (
+                    <p>
+                      {relatedMice.relatedmouse.map(
+                        (result) => result.productName
+                      )}
+                    </p>
+                  ) : (
+                    <p> No related products to display</p>
+                  )}
                 </div>
               </Item>
             </Grid>
@@ -257,7 +308,11 @@ function ResultsPage() {
             columns={{ xs: 4, sm: 8, md: 12 }}
             alignItems="stretch"
           >
-            <Grid item xs={2} sm={4} md={4}
+            <Grid
+              item
+              xs={2}
+              sm={4}
+              md={4}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -274,15 +329,22 @@ function ResultsPage() {
                 className="grip"
               >
                 <PanToolOutlinedIcon />
-                <Box sx={{ marginLeft: "8px" }}>
+                <Box sx={{ marginLeft: "8px", textDecoration: "underline" }}>
                   <strong>Mouse Grip</strong>
                 </Box>
               </Item>
-              <Card sx={{ border: 1, marginLeft: "15px", flexGrow: 1 }} variant="outlined">
+              <Card
+                sx={{ border: 1, marginLeft: "15px", flexGrow: 1 }}
+                variant="outlined"
+              >
                 {grip}
               </Card>
             </Grid>
-            <Grid item xs={2} sm={4} md={4}
+            <Grid
+              item
+              xs={2}
+              sm={4}
+              md={4}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -296,7 +358,7 @@ function ResultsPage() {
                 }}
               >
                 <FitnessCenterOutlinedIcon />
-                <Box sx={{ marginLeft: "8px" }}>
+                <Box sx={{ marginLeft: "8px", textDecoration: "underline" }}>
                   <strong>Weight and Size</strong>
                 </Box>
               </Item>
@@ -305,7 +367,10 @@ function ResultsPage() {
               </Card>
             </Grid>
             <Grid
-              item xs={2} sm={4} md={4}
+              item
+              xs={2}
+              sm={4}
+              md={4}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -322,11 +387,14 @@ function ResultsPage() {
               >
                 {" "}
                 <AspectRatioIcon />
-                <Box sx={{ marginLeft: "8px" }}>
+                <Box sx={{ marginLeft: "8px", textDecoration: "underline" }}>
                   <strong>Misc & Additional Info</strong>
                 </Box>
               </Item>
-              <Card sx={{ border: 1, marginRight: "15px", flexGrow: 1 }} variant="outlined">
+              <Card
+                sx={{ border: 1, marginRight: "15px", flexGrow: 1 }}
+                variant="outlined"
+              >
                 {misc}
               </Card>
             </Grid>

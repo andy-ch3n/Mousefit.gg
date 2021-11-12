@@ -1,49 +1,49 @@
 h1 {
-    display:flex;
-    justify-content: center;
-  }
+  display: flex;
+  justify-content: center;
+}
 
-  .buy-button {
-    display:flex;
-    justify-content: center;
-  }
+.buy-button {
+  display: flex;
+  justify-content: center;
+}
 
-  .results-page {
-    background-color: #f8f8ff;
-    opacity: 0.85;
-    border-color: blue;
-    border-radius: 1%;
-  }
+.results-page {
+  background-color: #f5f5f5;
+  opacity: 1;
+  border-color: blue;
+  border-radius: 1%;
+}
 
-  .product-name {
-    display: flex;
-    justify-content: center;
-    align-content: stretch;
-  }
+.product-name {
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
+}
 
-  .product-header {
-    display: flex;
-    justify-content: center;
-    align-content: stretch;
-  }
+.product-header {
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
+}
 
-  .socialImages {
-    margin-right: 15px;
-    padding: 10px;
-  }
+.socialImages {
+  margin-right: 15px;
+  padding: 10px;
+}
 
-  .social {
-    margin-top: 20px;
-  }
+.social {
+  margin-top: 20px;
+}
 
-  .related1 {
-    width: 75%;
-    margin-left: 40px;
-  }
+.related1 {
+  width: 75%;
+  margin-left: 40px;
+}
 
-  .grip {
-    background-color: #0C223E;
-  }
+.grip {
+  background-color: #0c223e;
+}
 .relatedMouse {
   text-decoration: underline;
 }
@@ -58,22 +58,23 @@ h1 {
 
 .gradient-text {
   /* Fallback: Set a background color. */
-  background-color: #CA4246;
+  background-color: #ca4246;
   font-size: 50px;
 
   /* Create the gradient. */
-   background-image: linear-gradient(
-        45deg,
-        #0b0303 16.666%,
-        #1260d4 16.666%,
-        #0a329f 33.333%,
-        #00159c 33.333%,
-        #0a39a8 50%,
-        #000000 50%,
-        #000000 66.666%,
-        #476098 66.666%,
-        #476098 83.333%,
-        #A7489B 83.333%);
+  background-image: linear-gradient(
+    45deg,
+    #0b0303 16.666%,
+    #1260d4 16.666%,
+    #0a329f 33.333%,
+    #00159c 33.333%,
+    #0a39a8 50%,
+    #000000 50%,
+    #000000 66.666%,
+    #476098 66.666%,
+    #476098 83.333%,
+    #a7489b 83.333%
+  );
 
   /* Set the background size and repeat properties. */
   background-size: 100%;
@@ -85,25 +86,61 @@ h1 {
   -webkit-text-fill-color: transparent;
 
   /* Animate the text when loading the element. */
-    /* This animates it on page load and when hovering out. */
-    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
-
+  /* This animates it on page load and when hovering out. */
+  animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
 }
 
-.gradient-text:hover{
-    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+.gradient-text:hover {
+  animation: rainbow-text-simple-animation 0.5s ease-in forwards;
 }
 
+.gradient-name {
+  /* Fallback: Set a background color. */
+  background-color: #ca4246;
+  font-size: 25px;
+
+  /* Create the gradient. */
+  background-image: linear-gradient(
+    45deg,
+    #0b0303 16.666%,
+    #1260d4 16.666%,
+    #0a329f 33.333%,
+    #00159c 33.333%,
+    #0a39a8 50%,
+    #000000 50%,
+    #000000 66.666%,
+    #476098 66.666%,
+    #476098 83.333%,
+    #a7489b 83.333%
+  );
+
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Animate the text when loading the element. */
+  /* This animates it on page load and when hovering out. */
+  animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+}
+
+.gradient-name:hover {
+  animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
 
 @keyframes rainbow-text-simple-animation-rev {
   0% {
-      background-size: 650%;
+    background-size: 650%;
   }
   40% {
-      background-size: 650%;
+    background-size: 650%;
   }
   100% {
-      background-size: 100%;
+    background-size: 100%;
   }
 }
 
@@ -111,16 +148,15 @@ h1 {
 /* Animation shown when hovering over the text. */
 @keyframes rainbow-text-simple-animation {
   0% {
-      background-size: 100%;
+    background-size: 100%;
   }
   80% {
-      background-size: 650%;
+    background-size: 650%;
   }
   100% {
-      background-size: 650%;
+    background-size: 650%;
   }
 }
-
 
 .ital {
   font-style: italic;
@@ -129,4 +165,12 @@ h1 {
 
 .product-stars {
   margin-right: 8px;
+  margin-top: 8px;
+}
+
+.social-stars {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
 }
