@@ -21,14 +21,14 @@ We first started with a comprehensive google sheet which had hundreds of gaming 
 **Challenges we ran into**
 We didn’t have time to make our data more comprehensive. We wanted to, but it was out of scope to scrape each large mouse brand’s website for their mouses and then add this data into our database. The animated star background caused some issues with layout and spacing issues. The 3d model rotating mouse lagged our page alot (turn hardware acceleration on in google so the mouse model isn’t laggy) Not able to deploy the scraped data on Heroku due to scraping taking longer than 30s. So results page wont load
 
-**Accomplishments that we're proud of
+**Accomplishments that we're proud of**
 **We managed to keep the app to a single page and just have it conditionally render. Able to plan, finish and deploy our project all within 5 days. Our entire team learned how to code only 5 month ago and were able to make this so we’re surprised at ourselves!
 
 **What we learned**
 We familiarized ourself more with MaterialUI and learned/incorporated Redux within a week. Scraping with puppeteer is really useful and helped give our product one more important feature
 
 **What's next for MouseFit.gg
-**We want to funnel this quiz into a mouse rental business eventually where people can rent and try used mouses in bulk. Kind of like Stitch Fix but for gaming mice.
+We want to funnel this quiz into a mouse rental business eventually where people can rent and try used mouses in bulk. Kind of like Stitch Fix but for gaming mice.
 
 **Built With**
 css
